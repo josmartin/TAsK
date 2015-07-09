@@ -32,13 +32,13 @@ int ParseIndiffCurves::getODIndex(const std::string& line) {
 FPType ParseIndiffCurves::getFirst(const std::string& line) {
 	size_t pos = line.find(",");
 	assert(pos != std::string::npos);
-	return strtold(line.substr(0, pos).c_str(), NULL);
+	return STR2FPTYPE(line.substr(0, pos).c_str(), NULL);
 };
 
 FPType ParseIndiffCurves::getSecond(const std::string& line)  {
 	size_t pos = line.find(",");
 	assert(pos != std::string::npos);
-	return strtold(line.substr(pos + 1).c_str(), NULL);
+	return STR2FPTYPE(line.substr(pos + 1).c_str(), NULL);
 };
 
 int ParseIndiffCurves::getCurvePoints(const std::string& line, PointsContainer& points) {

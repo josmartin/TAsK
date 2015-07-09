@@ -15,7 +15,7 @@ NonAdditivePC::~NonAdditivePC(){
 
 FPType NonAdditivePC::calculate(Path *path, int odIndex) const{
 	assert(path != NULL && odIndex >=0);
-	TollType totalToll = 0.0;
+	TollType totalToll = 0;
 	FPType totalTime = 0.0;
 	for (StarLinkIterator it = path->begin(); it != path->end(); ++it) {
 		StarLink* link = *it;

@@ -8,8 +8,7 @@
 #include <cassert>
 
 Derivative::Derivative(FPType zeroFlow, LinkFncContainer *fnc) : 
-						size_(0), x_(NULL), y_(NULL),  indexes_(NULL),
-						zeroFlow_(zeroFlow), fnc_(fnc) {
+						size_(0), zeroFlow_(zeroFlow), fnc_(fnc) {
 	
 };
 
@@ -35,7 +34,20 @@ FPType Derivative::calculate(FPType alpha) const {
 	return sum;
 };
 
-void Derivative::setDataPointers(int size, FPType *x, FPType *y, int *indexes){
+void Derivative::setDataPointers(int size, FPType* x, FPType* y, int* indexes){
+	size_ = size;
+	x_ = std::vector<FPType>(size);
+	y_ = std::vector<FPType>(size);
+	indexes_ = std::vector<int>(size);
+	for (int i = 0; i < size; ++i) {
+		x_[i] = x[i];
+		y_[i] = y[i];
+		indexes_[i] = indexes[i];
+	}
+};
+
+
+void Derivative::setDataPointers(int size, const std::vector<FPType>& x, const std::vector<FPType>& y, const std::vector<int>& indexes){
 	size_ = size;
 	x_ = x;
 	y_ = y;

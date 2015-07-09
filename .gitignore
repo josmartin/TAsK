@@ -26,3 +26,9 @@
 *.exe
 *.out
 *.app
+
+src/ta
+
+# Windows build folders
+Debug/
+Release/

@@ -97,7 +97,7 @@ bool DAGraph::handleBackEdge(StarLink* link){
 	return true;
 };
 
-bool DAGraph::explore(int vertex, bool *visited){
+bool DAGraph::explore(int vertex, std::vector<bool>& visited){
 	
 	visited[vertex] = true;
 	preVisit(vertex);
@@ -139,7 +139,7 @@ bool DAGraph::topologicalSort(){
 	clock_ = 1;
 	topOrder_.clear();
 	int nbNodes = net_->getNbNodes(); 
-	bool visited[nbNodes];
+	std::vector<bool> visited(nbNodes);
 	for (int i = 0; i < nbNodes; ++i) {
 		visited[i] = false;
 	}
@@ -349,13 +349,23 @@ bool DAGraph::removeUnusedLinks(const std::list<StarLink*> &links){
 // at the moment No topological order is maintained!
 bool DAGraph::removeUnusedLinks(){
 	bool wasDeleted = false;
-	for(std::list<int>::iterator it = linkIndexes_.begin(); it != linkIndexes_.end(); ++it){
+	std::list<int>::iterator it = linkIndexes_.begin();
+	while ( it != linkIndexes_.end() ) {
 		if (removeLink(*it)) {
 			it = linkIndexes_.erase(it);
 			wasDeleted = true;
-			--it;
+		} else {
+			it++;
 		}
 	}
+
+	//for(std::list<int>::iterator it = linkIndexes_.begin(); it != linkIndexes_.end(); ++it){
+	//	if (removeLink(*it)) {
+	//		it = linkIndexes_.erase(it);
+	//		wasDeleted = true;
+	//		--it;
+	//	}
+	//}
 	return wasDeleted;
 };
 
@@ -476,7 +486,7 @@ DAGraphNode* DAGraph::getNode(int index) const{
 
 FPType DAGraph::checkOFlowsFeasibility(){
 	int nbNodes = net_->getNbNodes(); 
-	FPType total[nbNodes];
+	std::vector<FPType> total(nbNodes);
 	for (int i = 0; i < nbNodes; ++i) {
 		total[i] = 0.0;
 	}

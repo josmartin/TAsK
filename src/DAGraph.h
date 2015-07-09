@@ -243,7 +243,7 @@ class DAGraph {
 		
 		/** This method is used in topological sort. For details see \cite Dasgupta2006.
 		*/
-		bool explore(int vertex, bool *visited);
+		bool explore(int vertex, std::vector<bool>& visited);
 
 		/** This method is used in topological sort. For details see \cite Dasgupta2006.
 		*/

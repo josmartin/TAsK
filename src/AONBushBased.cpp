@@ -17,7 +17,7 @@ AONBushBased::~AONBushBased(){
 FPType AONBushBased::performAssignmentForOrigin(InitialiseSolution *solution, Origin* origin){
 	int originIndex = origin->getIndex();
 	shPath_->calculate(originIndex);
-	int nodes[nbNodes_];
+	std::vector<int> nodes(nbNodes_);
 	for (int i = 0; i < nbNodes_; ++i){
 		nodes[i] = -1;
 	}

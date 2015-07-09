@@ -63,7 +63,7 @@ Path* createPath(const std::string& line, const StarNetwork& net) {
 };
 
 FPType getFloatValue(const std::string& line) {
-	return strtold(getNextIndex(line).c_str(), NULL);
+	return STR2FPTYPE(getNextIndex(line).c_str(), NULL);
 };
 
 void PathSetParser::parse(PathSet& paths, const StarNetwork& net, const std::string& fileName) {

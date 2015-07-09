@@ -34,7 +34,8 @@ class Derivative {
 			iterate through arrays (x[indexes[i]]), so array x and y can be bigger than size 
 			specified in input. 
 		*/
-		void setDataPointers(int size, FPType *x, FPType *y, int *indexes);
+		void setDataPointers(int size, const std::vector<FPType>& x, const std::vector<FPType>& y, const std::vector<int>& indexes);
+		void setDataPointers(int size, FPType* x, FPType* y, int* indexes);
 
 		/** @return link flow tolerance.
 		*/
@@ -61,9 +62,9 @@ class Derivative {
 		
 	private:
 		int size_;
-		FPType* x_;
-		FPType* y_;
-		int* indexes_;
+		std::vector<FPType> x_;
+		std::vector<FPType> y_;
+		std::vector<int> indexes_;
 		const FPType zeroFlow_;
 		
 		LinkFncContainer* fnc_;

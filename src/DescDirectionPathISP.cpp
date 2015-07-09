@@ -44,7 +44,7 @@ PathAndDirection** DescDirectionPathISP::createPathDirection(int &size, const st
   	FPType totalDir = 0.0;
   	Path *curPath = NULL;
   	int countCheap = 0;
-  	int indexes[size];
+  	std::vector<int> indexes(size);
   	for (std::list<Path*>::const_iterator it = paths.begin(); it != paths.end(); ++it) {
   		curPath = *it;
   		assert(curPath != NULL);
@@ -65,7 +65,7 @@ PathAndDirection** DescDirectionPathISP::createPathDirection(int &size, const st
   	// calculate slopes and total slope first
   	FPType totalSlope = 0.0;
   	FPType curSlope = 0.0;
-  	FPType slopes[countCheap];
+  	std::vector<FPType> slopes(countCheap);
   	for (int i = 0; i < countCheap; ++i){
   		curSlope = calculateDerivative((returnSet[indexes[i]])->getPath());
   		if (curSlope < slope_) curSlope = slope_;

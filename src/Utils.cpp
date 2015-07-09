@@ -27,7 +27,7 @@
 #include <boost/tokenizer.hpp>
 
 void Utils::getDisjointLinks(Path *path1, Path *path2, std::list<StarLink*> &list, int nbLinks){
-	int indexes[nbLinks];
+	std::vector<int> indexes(nbLinks);
 	for (int i = 0; i < nbLinks; ++i) {
 		indexes[i] = 0;
 	}
@@ -55,9 +55,9 @@ void Utils::getDisjointLinks(Path *path1, Path *path2, std::list<StarLink*> &lis
 };
 
 void Utils::getCommonLinks(PathBasedFlowMove *paths, std::list<StarLink*> &list, int nbLinks){
-	int indexes[nbLinks];
-	int indexesTmp[nbLinks];
-	StarLink* links[nbLinks];
+	std::vector<int> indexes(nbLinks);
+	std::vector<int> indexesTmp(nbLinks);
+	std::vector<StarLink*> links(nbLinks);
 	int size = 0;
 	for (int i = 0; i < nbLinks; ++i) {
 		indexes[i] = 0;
@@ -91,7 +91,7 @@ void Utils::getCommonLinks(PathBasedFlowMove *paths, std::list<StarLink*> &list,
 };
 
 FPType Utils::checkFeasibility(StarNetwork *net, ODMatrix *mat){
-	FPType total[net->getNbNodes()];
+	std::vector<FPType> total(net->getNbNodes());
 	for (int i = 0; i < net->getNbNodes(); ++i) {
 		total[i] = 0.0;
 	}
@@ -148,7 +148,7 @@ void Utils::readART3Coordinates(const std::string& art3NodesFile,
 	node.x = -1;
 	node.y = -1;
 	int nbParams = 8;
-	std::string params[nbParams]; 
+	std::vector<std::string> params(nbParams); 
 	for (int i = 0; i < nbParams; ++i) 
 		params[i] = "";
 	while (read.isGood()) {
@@ -163,7 +163,7 @@ void Utils::readART3Coordinates(const std::string& art3NodesFile,
 	}
 };
 
-void Utils::tokenizeIntoStr(const std::string& lineToTokenize, std::string* result, int nbTokens){
+void Utils::tokenizeIntoStr(const std::string& lineToTokenize, std::vector<std::string>& result, int nbTokens){
 	std::stringstream ss(lineToTokenize);
 	for (int i = 0; i < nbTokens; ++i) {
 		ss >> result[i];

@@ -5,7 +5,7 @@
 
 #include <vector>
 #include <list>
-#include <tr1/unordered_set>
+#include <boost/tr1/unordered_set.hpp>
 
 class ShortestPath;
 class DAGraphTapas;

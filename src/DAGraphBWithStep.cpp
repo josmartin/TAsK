@@ -22,9 +22,9 @@ DAGraphBWithStep::~DAGraphBWithStep(){
 
 FPType DAGraphBWithStep::calcFlowStep(Path* minPath, Path* maxPath) const{
 	int nbLinks = net_->getNbLinks();
-	FPType x[nbLinks];
-	FPType y[nbLinks];
-	int indexes[nbLinks];
+	std::vector<FPType> x(nbLinks);
+	std::vector<FPType> y(nbLinks);
+	std::vector<int> indexes(nbLinks);
 	
 	for(StarLinkIterator it = maxPath->begin(); it != maxPath->end(); ++it){
 		y[(*it)->getIndex()] = 0.0;

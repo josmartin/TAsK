@@ -44,7 +44,7 @@ void LabelCorrectingAl::calculate(int originIndex){
 
 	originIndex_ = originIndex;
 	
-	int sequenceList[nbNodes_ + 1]; // +1 - because we have one additional pointer:
+	std::vector<int> sequenceList(nbNodes_ + 2); // +1 - because we have one additional pointer:
 					// sequenceList[nbNodes_+1] - contains the index of the current 
 					// last node in the sequenceList
 	int firstInSequence = -1;

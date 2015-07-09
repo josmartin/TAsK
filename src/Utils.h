@@ -76,7 +76,7 @@ namespace Utils {
 	/** Very simple implementation to tokenize string. It relies on stringstream ability to
 		tokenize string.
 	*/
-	void tokenizeIntoStr(const std::string& lineToTokenize, std::string* result, int nbTokens);
+	void tokenizeIntoStr(const std::string& lineToTokenize, std::vector<std::string>& result, int nbTokens);
 	/** @return Coords object with filled attributes if nodeID is present in coords,
 			if not present all attributes are set to -1.
 	*/

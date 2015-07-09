@@ -8,9 +8,11 @@
 	by defining USE_EXTENDED_PRECISION (long double) or not (double).
 */
 #ifdef USE_EXTENDED_PRECISION	
-typedef long double FPType;
+  typedef long double FPType;
+  #define STR2FPTYPE(x, y) (strtold(x, y))
 #else
-typedef double FPType;
+  typedef double FPType;
+  #define STR2FPTYPE(x, y) (strtod(x, y))
 #endif
 
 typedef int TollType; /**< type for toll values.*/

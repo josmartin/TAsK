@@ -213,9 +213,9 @@ void DAGraphLUCE::computeDirection(std::vector<FPType> &e_links, const std::vect
 FPType DAGraphLUCE::computeStepSize(const std::vector<FPType> &e_links){
 	
 	int linkIndex = -1;
-	FPType x[nbLinks_];
-	FPType y[nbLinks_];
-	int indexes[nbLinks_];
+	std::vector<FPType> x(nbLinks_);
+	std::vector<FPType> y(nbLinks_);
+	std::vector<int> indexes(nbLinks_);
 	int size = 0;
 	StarLink *link = NULL;
 	for (int i =  beginAscPass(); i != -1; i = getNextAscPass()) {

@@ -16,9 +16,9 @@ PASWithStep::~PASWithStep(){
 };
 
 FPType PASWithStep::getFlowShift(){
-	FPType x[nbLinks_];
-	FPType y[nbLinks_];
-	int indexes[nbLinks_];
+	std::vector<FPType> x(nbLinks_);
+	std::vector<FPType> y(nbLinks_);
+	std::vector<int> indexes(nbLinks_);
 
 	int size = 0;
 	FPType dir[2]; 
